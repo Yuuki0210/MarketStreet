@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <%= notice %>
+<% else flash[:alert] %>
+  <%= alert %>
+<% end %>
 <div class="container">
   <h1>ジャンル投稿</h1>
     <%= form_with model: [:admin, @genre], local:true do |f| %>
