@@ -1,4 +1,10 @@
 <div class="container">
+  <h1>ジャンル編集</h1>
+  <% if flash[:notice] %>
+    <%= notice %>
+  <% else flash[:alert] %>
+    <%= alert %>
+  <% end %>
   <%= form_with model:[:admin, @genre], local:true do |f| %>
     <div class="row">
       <%= f.label :name,"ジャンル名" %>
