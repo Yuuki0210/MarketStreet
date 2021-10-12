@@ -6,7 +6,7 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item = Item.create params.require(:item).permit(:image_id)
+    #@item = Item.create params.require(:item).permit(:image_id)
     @item.save
     redirect_to admin_items_path
   end
@@ -16,6 +16,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
