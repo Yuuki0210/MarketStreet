@@ -24,8 +24,8 @@
         <% @genres.each do |genre| %>
         <tr>
           <td><%= genre.name %></td>
-          <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class:"btn btn-outline-secondary btn-sm" %></td>
-          <td><%= link_to "削除する", admin_genre_path(genre.id), method: :delete, data: {confirm: "削除しますか？"},class:"btn btn-outline-secondary btn-sm" %> %></td>
+          <td><%= link_to "編集", edit_admin_genre_path(genre.id), class:"btn btn-outline-secondary btn-sm" %></td>
+          <td><%= link_to "削除", admin_genre_path(genre.id), method: :delete, data: {confirm: "削除しますか？"},class:"btn btn-outline-secondary btn-sm" %> %></td>
         </tr>
         <% end %>
       </tbody>
