@@ -5,18 +5,30 @@
 <% end %>
 <div class="container">
   <h1>ジャンル投稿</h1>
-    <%= form_with model: [:admin, @genre], local:true do |f| %>
-      <div class="row">
-        <%= f.label :name, "ジャンル名" %>
-        <%= f.text_field :name %>
-        <%= f.submit '新規登録' %>
-      </div>
-    <% end %>
-      <% @genres.each do |genre| %>
-        <div class="row">
-          <%= genre.name %>
-          <%= link_to "編集する", edit_admin_genre_path(genre.id) %>
-          <%= link_to "削除する", admin_genre_path(genre.id), method: :delete, data: {confirm: "削除しますか？"} %>
-        </div>
+  <div class="row"></div>
+      <%= form_with model: [:admin, @genre], local:true do |f| %>
+      <tbody>
+        <tr>
+          <td>ジャンル名</td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td><%= f.submit '新規登録' %></td>
+        </tr>
+      </tbody>
       <% end %>
+  </div>
+  <div class="row">
+    <table>
+      <tbody>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= link_to "編集", edit_admin_genre_path(genre.id), class:"btn btn-outline-secondary btn-sm" %></td>
+          <td><%= link_to "削除", admin_genre_path(genre.id), method: :delete, data: {confirm: "削除しますか？"},class:"btn btn-outline-secondary btn-sm" %> %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
