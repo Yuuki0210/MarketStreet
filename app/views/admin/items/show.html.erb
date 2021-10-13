@@ -3,7 +3,7 @@
     <h1>商品詳細</h1>
       <p>
         <% if @item.image.attached? %>
-        <%#= image_tag.@item.image_id %>
+        <%= image_tag @item.image %>
         <% end %>
       </p>
       <table>
@@ -22,14 +22,14 @@
           </tr>
           <tr>
             <td>税抜き価格</br>（税込価格）</td>
-            <td><%= (@item.price*1.1).round.to_s %></br></%>（<%= @item.price %>）</td>
+            <td><%= (@item.price*1.1).round.to_s %>円</br></%>（<%= @item.price %>円）</td>
           </tr>
           <tr>
             <td>販売ステータス</td>
             <% if @item.is_active == true %>
               <% status = "販売中" %>
             <% else %>
-              <% status = "販売停止中’" %>
+              <% status = "販売停止中" %>
             <% end %>
             <td><%= status %></td>
           </tr>
