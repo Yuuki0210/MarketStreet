@@ -3,7 +3,7 @@
     <h1>商品詳細</h1>
       <p>
         <% if @item.image.attached? %>
-        <%= image_tag @item.image %>
+        <%= image_tag @item.image, size: "250x250" %>
         <% end %>
       </p>
       <table>
