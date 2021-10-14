@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>カートの中身一覧</h1>
+  <div class="row">
+    <table class="table table-bordered">
+      <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <% if cart_item.item.image.attached? %>
+            <%= image_tag cart_item.item.image, size: "150x150" %>
+            <% end %>
+          </td>
+          <td><%= cart_item.item.name %></td>
+          <td>
+            <%= form_with model:cart_item, method: :patch, local:true do |f| %>
+            <%= f.select :piece, @number %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "詳細", item_path(cart_item.item) %>
+          </td>
+          <td>削除</td>
+          <td><%#= (cart_item.price*1.1)round.to_s %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
