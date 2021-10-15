@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <h1>商品詳細</h1>
-    <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+    <%= form_with model: @cart_item, url:cart_items_path, local:true do |f| %>
       <p>
         <% if @item.image.attached? %>
         <%= image_tag @item.image, size: "250x250" %>
@@ -27,6 +27,7 @@
           </tr>
         </tbody>
       </table>
+      
       <%= f.hidden_field :customer_id, :value => current_customer.id %>
       <%= f.hidden_field :item_id, :value => @item.id %>
       <%= f.select :piece, @number %>

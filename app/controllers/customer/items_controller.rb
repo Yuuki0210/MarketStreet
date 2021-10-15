@@ -1,7 +1,7 @@
 class Customer::ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = Item.where(is_active: 1).page(params[:page]).per(10)
   end
 
   def show
