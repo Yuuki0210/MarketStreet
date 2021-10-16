@@ -9,12 +9,20 @@ class Customer::CustomersController < ApplicationController
   end
 
   def update
+    @customer = current_customer
+    @customer.update(customer_path)
+    redirect_to mypage_path
   end
 
   def delete
+    @customer = current_customer
   end
 
   def deleted
+    @customer = current_customer
+    @customer.update(is_deleted: false)
+    reset_session
+    redirect_to root_path
   end
 
   private
