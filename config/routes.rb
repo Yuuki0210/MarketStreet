@@ -27,11 +27,11 @@ Rails.application.routes.draw do
   resources :customers, only: [:edit, :update]
   get 'customers/mypage' => 'customers#show', as: 'mypage'
   get 'customers/delete' => 'customers#delete', as: 'delete'
-  patch 'customers/deleted' => 'customers#deleted', as: 'deleteed'
+  patch 'customers/deleted' => 'customers#deleted', as: 'deleted'
   root to: 'homes#top'
   get 'about' => 'homes#about'
   end
-  
+
 
 end
 
