@@ -2,11 +2,14 @@
   <h1>カートの中身一覧</h1>
   <%= link_to "カートを空にする", all_destroy_path, method: :delete %>
   <div class="row">
-    <tbody>
+    <table>
+      <tbody>
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
+            <%= link_to item_path(cart_item.item) do %>
             <%= image_tag cart_item.item.image, size: "150x150" %>
+            <% end %>
           </td>
           <td><%= cart_item.item.name %></td>
           <td>
@@ -15,13 +18,12 @@
             <%= f.submit "変更" %>
             <% end %>
           </td>
-          <td>
-            <%= link_to "詳細", item_path(cart_item.item) %>
-          </td>
           <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete %></td>
-          <td><%#= (cart_item.price*1.1)round.to_s %></td>
+          <td>￥<%= (cart_item.item.price*1.1*cart_item.piece).round.to_s %></td>
         </tr>
         <% end %>
-    </tbody>
+      </tbody>
+    </table>
+    
   </div>
 </div>
