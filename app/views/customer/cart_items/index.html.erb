@@ -1,6 +1,8 @@
 <div class="container">
   <h1>カートの中身一覧</h1>
+  <%= link_to "カートを空にする", all_destroy_path, method: :delete %>
   <div class="row">
+    <tbody>
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
@@ -10,14 +12,16 @@
           <td>
             <%= form_with model:cart_item, method: :patch, local:true do |f| %>
             <%= f.select :piece, @number %>
+            <%= f.submit "変更" %>
             <% end %>
           </td>
           <td>
             <%= link_to "詳細", item_path(cart_item.item) %>
           </td>
-          <td></td>
+          <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete %></td>
           <td><%#= (cart_item.price*1.1)round.to_s %></td>
         </tr>
         <% end %>
+    </tbody>
   </div>
 </div>
