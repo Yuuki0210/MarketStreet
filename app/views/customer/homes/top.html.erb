@@ -1,1 +1,6 @@
-top
+<% @items.each do |item| %>
+<%= link_to item_path(item) do %>
+<%= image_tag item.image, size: "250x250" %>
+<% end %>
+<% end %>
+<%= link_to "商品一覧を見る", items_path %>
