@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <h1>注文情報入力</h1>
+    <table>
+      <tbpdy>
+        <%= form_with model: @order, url: check_path, local:true do |f| %>
+        <tr>
+          <td>支払い方法</td>
+          <td>
+            <%= f.radio_button :payment_method, :クレジットカード %>
+            <%= f.label :payment_method, "クレジットカード", {value: :"0"} %><br />
+            <%= f.radio_button :payment_method, :銀行振込 %>
+            <%= f.label :payment_method, "銀行振込", {value: :"1"} %>
+          </td>
+        </tr>
+        <tr>
+          <td>お届け先</td>
+          <td>
+            <%= f.radio_button :address_option, "0" %>ご自身の住所<br />
+            〒<%= @customer.postal_code %><%= @customer.address %><br />
+            <%= @customer.last_name %><%= @customer.first_name %><br />
+          </td>
+          <td>
+            <%= f.radio_button :address_option, "1" %>新しいお届け先<br />
+            郵便番号<%= f.text_field :postal_code %><br />
+            住所<%= f.text_field :address %><br />
+            宛名<%= f.text_field :name %><br/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= f.submit "確認画面へ進む" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbpdy>
+    </table>
+  </div>
+</div>
