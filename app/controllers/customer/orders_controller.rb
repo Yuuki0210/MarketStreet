@@ -41,11 +41,16 @@ class Customer::OrdersController < ApplicationController
 
   end
 
-  # def show
-  # end
+  def thanks
+  end
 
-  # def index
-  # end
+  def index
+    @orders = Order.where(customer: current_customer)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+  end
 
   private
 
