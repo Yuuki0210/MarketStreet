@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集画面</h1>
+  </div>
+  <div class="row">
+    <%= form_with model:@customer, url: admin_customer_path, local:true do |f| %>
+    <%= f.label "名前" %>
+    <span>姓</span>
+    <%= f.text_field :last_name %>
+    <span>名</span>
+    <%= f.text_field :first_name %><br />
+    <%= f.label "フリガナ" %>
+    <span>セイ</span>
+    <%= f.text_field :kana_last_name %>
+    <span>メイ</span>
+    <%= f.text_field :kana_first_name %><br />
+    <%= f.label "郵便番号" %>
+    <%= f.text_field :postal_code %><br />
+    <%= f.label "住所" %>
+    <%= f.text_field :address %><br />
+    <%= f.label "電話番号" %>
+    <%= f.text_field :phone_number %><br />
+    <%= f.label "メールアドレス" %>
+    <%= f.text_field :email %><br />
+    <%= f.label "会員ステータス" %>
+    <%= f.radio_button :is_deleted, true %>
+    <%= f.label :is_deleted, "有効", value: true %>
+    <%= f.radio_button :is_deleted, false %>
+    <%= f.label :is_deleted, "無効", value: false %>
+    <%= f.submit "変更を保存" %>
+    <% end %>
+  </div>
+</div>

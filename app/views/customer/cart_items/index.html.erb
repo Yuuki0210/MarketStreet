@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>カートの中身一覧</h1>
+  <%= link_to "カートを空にする", all_destroy_path, method: :delete %>
+  <div class="row">
+    <table>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= link_to item_path(cart_item.item) do %>
+            <%= image_tag cart_item.item.image, size: "150x150" %>
+            <% end %>
+          </td>
+          <td><%= cart_item.item.name %></td>
+          <td>
+            <%= form_with model:cart_item, method: :patch, local:true do |f| %>
+            <%= f.select :piece, @number %>
+            <%= f.submit "変更" %>
+            <% end %>
+          </td>
+          <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete %></td>
+          <td>￥<%= (cart_item.item.price*1.1*cart_item.piece).round.to_s %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to "情報入力画面に進む", new_order_path %>
+  </div>
+</div>

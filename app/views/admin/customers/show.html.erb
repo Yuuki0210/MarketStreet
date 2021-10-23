@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <h1><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</h1>
+  </div>
+  <div class="row">
+    <table>
+      <tr>
+        <td>会員ID</td>
+        <td><%= @customer.id %></td>
+      </tr>
+      <tr>
+        <td>氏名</td>
+        <td><%= @customer.last_name %><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td>〒<%= @customer.postal_code %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= @customer.phone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <td>会員ステータス</td>
+        <% if @customer.is_deleted == false %>
+        <td>無効</td>
+        <% else %>
+        <td>有効</td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+  <div class="row">
+    <%= link_to "編集する", edit_admin_customer_path(@customer) %>
+  </div>
+</div>
