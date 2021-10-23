@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
+  devise_for :managers
   namespace :admin do
-    devise_for :admins, controllers: {
-      sessions: 'admin/admins/sessions',
-      registrations: 'admin/admins/registrations',
-      passwords: 'admin/admins/passwords'
+    devise_for :managers, controllers: {
+      sessions: 'admin/managers/sessions',
+      registrations: 'admin/managers/registrations',
+      passwords: 'admin/managers/passwords'
     }
   resources :items, except: [:destroy]
   resources :genres, only: [:index, :create, :edit, :update, :destroy]
