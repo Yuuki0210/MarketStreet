@@ -7,9 +7,99 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  </head>
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <%= link_to root_path do %>
+          <%= image_tag 'logo.png', size:'120x120', :class => "navbar-brand" %>
+        <% end %>
+        <%= link_to root_path , :class => "navbar-brand" do %>
+          <h1>Market Street</h1>
+        <% end %>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="ナビゲーションの切替">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <% if admin_manager_signed_in? %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "商品一覧", admin_items_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "商品一覧", admin_items_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "会員一覧", admin_customers_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "会員一覧", admin_customers_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "注文履歴一覧", admin_orders_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "注文履歴一覧", admin_orders_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ジャンル一覧", admin_genres_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "ジャンル一覧", admin_genres_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li  class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_manager_session_path, method: :delete , :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "ログアウト", destroy_admin_manager_session_path, method: :delete , :class => "d-block d-lg-none nav-link"%>
+            </li>
+          </ul>
+
+          <% elsif customer_signed_in? %>
+          <ul class="navbar-nav ml-auto">
+            <li>
+              <%= link_to "マイページ", mypage_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "マイページ", mypage_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li>
+              <%= link_to "商品一覧", items_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "商品一覧", items_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li>
+              <%= link_to "カート", cart_items_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "カート", cart_items_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => "d-block d-lg-none nav-link" %>
+            </li>
+          </ul>
+
+          <% else %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "会社概要", about_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "会社概要", about_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "商品一覧", items_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "商品一覧", items_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "新規登録", new_customer_registration_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path, :class => "d-none d-lg-block btn btn-outline-secondary btn-sm rounded-pill" %>
+              <%= link_to "ログイン", new_customer_session_path, :class => "d-block d-lg-none nav-link" %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
     <%= yield %>
+    </main>
+    <footer class="footer ml-auto py-3">
+      <div class="container">
+        <span class="text-muted">Market Street</span>
+      </div>
+    </footer>
   </body>
 </html>
