@@ -5,9 +5,9 @@
   <div class="container">
     <div class="row">
       <% @items.each do |item| %>
-      <div class="col-12 col-md-2 col-lg-4">
+      <div class="col-12 col-md-2 col-lg-4 p-5">
         <%= link_to item_path(item) do %>
-        <div class="card shadow p-3 mb-5 bg-light col-lg-12">
+        <div class="card shadow p-3 bg-light col-lg-12 h-100">
             <%= image_tag item.image, size: "auto" %>
           <div class="card-body col-md-12">
             <span><%= item.name %></span><br />
