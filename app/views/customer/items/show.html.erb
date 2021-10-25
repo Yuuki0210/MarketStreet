@@ -1,37 +1,25 @@
-<div class="container">
-  <div class="row">
-    <h1>商品詳細</h1>
-    <%= form_with model: @cart_item, url:cart_items_path, local:true do |f| %>
-      <p>
-        <% if @item.image.attached? %>
-        <%= image_tag @item.image, size: "250x250" %>
-        <% end %>
-      </p>
-      <table>
-        <tbody>
-          <tr>
-            <td>商品名</td>
-            <td><%= @item.name %></td>
-          </tr>
-          <tr>
-            <td>商品説明</td>
-            <td><%= @item.explanation %></td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td><%= @item.genre.name %></td>
-          </tr>
-          <tr>
-            <td>価格</td>
-            <td><%= @item.price %>円</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <%= f.hidden_field :customer_id, :value => current_customer.id %>
-      <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.select :piece, @number %>
-      <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      <% end %>
+<div class="card-list-container py-5">
+  <%= form_with model: @cart_item, url:cart_items_path, local:true do |f| %>
+  <div class="card w-50 mx-auto mt-6 shadow p-2">
+    <%= image_tag @item.image, size: "auto" %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <p class="card-title"><%= @item.name %></p>
+          <p class="card-text"><%= @item.explanation %></p>
+          <span>ジャンル：<%= @item.genre.name %></span>
+          <div class="pt-4">
+            <h4 class="pb-2"><%= @item.price %>円</h4>
+          </div>
+          <div class="float-right pb-3">
+            <h5>数量：<%= f.select :piece, @number %></h5>
+            <%= f.hidden_field :customer_id, :value => current_customer.id %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+          </div>
+        </div>
+      <%= f.submit "カートに入れる", class: "btn btn-success btn-block" %>
+      </div>
+    </div>
   </div>
+  <% end %>
 </div>
