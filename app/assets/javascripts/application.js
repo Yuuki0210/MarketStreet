@@ -14,3 +14,15 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+
+
+$(function() {
+  $('.a').slick({
+      dots: true,
+  });
+
+  $('.slick-dots li').on('mouseover', function() {
+    $('.a').slick('goTo', $(this).index());
+  });
+});

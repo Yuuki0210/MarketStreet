@@ -46,3 +46,38 @@ footer {
     position: absolute;
     width: 100%;
 }
+
+.position-relative{
+    position: relative;
+}
+
+.position-absolute{
+    position: absolute;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.img-caption {
+    top: 30%;
+    left: 0;
+    right: 0;
+}
+
+.good{
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3%;
+    left: 6%;
+
+}
+
+.item-title{
+    font-family: MS Sans Serif;
+}
+
+.welcome-image{
+
+}
