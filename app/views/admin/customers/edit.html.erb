@@ -1,3 +1,10 @@
+<div class="mx-auto text-center">
+<% if notice %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% elsif alert %>
+  <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+<% end %>
+</div>
 <div class="card-list-container py-5">
   <%= form_with model:@customer, url: admin_customer_path, local:true do |f| %>
   <div class="contents-title text-center py-3 pb-4">
