@@ -1,46 +1,46 @@
-<div class="container">
-  <h1>新規商品登録</h1>
+<div class="card-list-container py-5">
   <%= form_with model: [:admin, @item], local:true do |f| %>
-    <div class="row">
-      <table>
-        <tbody>
-          <tr>
-            <td>商品画像</td>
-            <td><%= f.file_field :image %></td>
-            <!--参考URL=>https://qiita.com/hmmrjn/items/7cc5e5348755c517458a-->
-          </tr>
-          <tr>
-            <td>商品名</td>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <td>商品説明</td>
-            <td><%= f.text_area :explanation %></td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
-            <!--参考URL=>https://qiita.com/Yu-8chan/items/58528f3ae5d4e0558bd5-->
-          </tr>
-          <tr>
-            <td>税抜き価格</td>
-            <td><%= f.text_field :price %></td>
-          </tr>
-          <tr>
-            <td>販売ステータス</td>
-            <td>
-              <%= f.radio_button :is_active, true %>
-              <%= f.label :is_active, "販売中", {value: :true} %>
-              <%= f.radio_button :is_active, false %>
-              <%= f.label :is_active, "販売停止中", {value: :false} %>
-              <!--参考URL=>https://nnnamani.com/blog/how-to-use-radio-button-on-rails/-->
-            </td>
-          </tr>
-          <tr>
-            <td><%= f.submit '新規登録' %></td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="contents-title text-center py-3 pb-4">
+    <h2 class="text-black-50 font-weight-lighter">新規商品登録</h2>
+  </div>
+  <div class="card w-50  mx-auto mt-3 shadow p-2 mb-5">
+    <div class="col-12 py-3">
+      <div class="imput-block">
+        <%= f.label :image, "商品画像" %></br>
+        <%= f.file_field :image %>
+      </div>
     </div>
+    <div class="col-12 py-3">
+      <div class="imput-block">
+        <%= f.label :name, "商品名" %>
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="input-block textarea">
+        <%= f.label :explanation, "商品説明" %>
+        <%= f.text_area :explanation, class:"form-control" %>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="input-block">
+        <%= f.label :genre_id, "ジャンル" %>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, class:"form-select form-select-lg mb-3" %>
+      </div>
+    </div>
+    <div class="col-12 py-3">
+      <div class="input-block">
+        <%= f.label :is_active, "販売ステータス" %> </br>
+        <%= f.label :is_active, "販売中", {value: :true} %>
+        <%= f.radio_button :is_active, true %><br />
+        <%= f.label :is_active, "販売停止中", {value: :false} %>
+        <%= f.radio_button :is_active, false %>
+        </div>
+      </div>
+      <div class="col-10 mx-auto">
+        <%= f.submit '新規登録', class:"btn btn-success btn-block py-2 m-3" %>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>

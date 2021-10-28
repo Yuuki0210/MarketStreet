@@ -3,26 +3,37 @@
 <% else flash[:alert] %>
   <%= alert %>
 <% end %>
-<div class="container">
-  <h1>ジャンル投稿</h1>
-  <div class="row"></div>
-      <%= form_with model: [:admin, @genre], local:true do |f| %>
-      <tbody>
-        <tr>
-          <td>ジャンル名</td>
-          <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-          <td><%= f.submit '新規登録' %></td>
-        </tr>
-      </tbody>
-      <% end %>
+
+<div class="card-list-container py-5">
+  <%= form_with model: [:admin, @genre], local:true do |f| %>
+  <div class="contents-title text-center py-3 pb-4">
+    <h2 class="text-black-50 font-weight-lighter">ジャンル登録</h2>
   </div>
-  <div class="row">
-    <table>
+  <div class="card w-50  mx-auto mt-2 shadow p-2">
+    <div class="col-10 mx-auto py-3">
+      <div class="imput-block">
+        <%= f.label :name, "ジャンル名" %>
+        <%= f.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+    <div class="col-5 mx-auto">
+        <%= f.submit '新規登録', class:"btn btn-success btn-block" %>
+    </div>
+  </div>
+  <div class="col-8 mx-auto pt-5">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th></th>
+          <th>ジャンル名</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
       <tbody>
         <% @genres.each do |genre| %>
         <tr>
+          <td></td>
           <td><%= genre.name %></td>
           <td><%= link_to "編集", edit_admin_genre_path(genre.id), class:"btn btn-outline-secondary btn-sm" %></td>
           <td><%= link_to "削除", admin_genre_path(genre.id), method: :delete, data: {confirm: "削除しますか？"},class:"btn btn-outline-secondary btn-sm" %></td>
@@ -30,5 +41,6 @@
         <% end %>
       </tbody>
     </table>
-  </div>
+    </div>
+  <% end %>
 </div>

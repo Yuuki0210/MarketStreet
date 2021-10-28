@@ -1,6 +1,34 @@
-<% @items.each do |item| %>
-<%= link_to item_path(item) do %>
-<%= image_tag item.image, size: "250x250" %>
-<% end %>
-<% end %>
-<%= link_to "商品一覧を見る", items_path %>
+<div class="py-4">
+  <div class="position-relative h-50">
+    <%= image_tag 'family1280.jpeg', style: "width:100%" %>
+    <div class="img-caption position-absolute text-center">
+    </div>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-6 col-md-2 col-lg-6 pt-4 h-100">
+    <h1 class="item-titler text-center text-black-50 font-weight-lighter pb-2">Item</h1>
+      <div class="a">
+      <% @random.each do |item| %>
+        <%= link_to item_path(item) do %>
+        <div class="b card shadow p-3 bg-light col-12 h-100">
+          <%= image_tag item.image, size: "auto" %>
+          <div class="card-body col-md-12">
+            <span><%= item.name %></span><br />
+            <span>￥<%= item.price %></span>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    <div class="col-5 item-titler text-center text-black-50 font-weight-lighter py-5 mt-5">
+      <h3>WELCOME TO</h3>
+      <h3>MARKET STREET</h3>
+      <h4 class="my-5">マーケットでの買い物を<br />より便利に簡単に</p>
+      <%= link_to "商品一覧を見る", items_path, class:"btn btn-outline-secondary btn-lg mt-4" %><br />
+      <%= image_tag 'logo.png', size:'220x220' %>
+      </div>
+  </div>
+</div>

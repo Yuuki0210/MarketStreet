@@ -59,6 +59,7 @@ https://docs.google.com/spreadsheets/d/1IfcfL3Ky6pw78hUfQhf09LCOHEddrNkxruqR9384
 
 - designevo
 - ぱくたそ
+- O-DAN
 
 ## 作成者 [Author]
 
