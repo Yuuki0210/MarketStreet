@@ -3,10 +3,9 @@ class Admin::OrdersController < ApplicationController
 
   def index
     if params[:id]
-      @orders = User.find(params[:id]).orders.page(params[:page]).reverse_order
-
+      @orders = User.find(params[:id]).orders.page(params[:page]).per(10).reverse_order
     else
-      @orders = Order.page(params[:page]).reverse_order
+      @orders = Order.page(params[:page]).per(10).reverse_order
 
     end
   end

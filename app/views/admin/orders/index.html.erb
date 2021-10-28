@@ -1,8 +1,10 @@
 <div class="container">
-  <h1>注文履歴一覧</h1>
-  <div class="row">
-    <table>
-      <thead>
+  <div class="contents-title text-center py-4 pb-4">
+    <h1 class="text-black-50 font-weight-lighter">注文履歴一覧</h1>
+  </div>
+  <div class="row py-5">
+    <table class="table">
+      <thead class="thead-dark">
         <tr>
           <th>購入日時</th>
           <th>購入者</th>
@@ -28,4 +30,7 @@
       </tbody>
     </table>
   </div>
+</div>
+<div class="page-link btn-lg mb-5">
+  <%= paginate @orders %>
 </div>
