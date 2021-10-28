@@ -1,21 +1,25 @@
-<div class="container">
-  <div class="row">
-    <h1>商品一覧</h1>
-    <table>
-      <% @items.each do |item| %>
-      <tr>
-        <td>
-          <%= link_to item_path(item) do %>
-            <%= image_tag item.image, size: "250x250" %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to item_path(item) do %>
-          <%= item.name %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+<div class="texts-wrapper">
+  <div class="contents-title text-center py-4 pb-4">
+    <h1 class="text-black-50 font-weight-lighter">ITEMS</h1>
   </div>
+  <div class="container">
+    <div class="row">
+      <% @items.each do |item| %>
+      <div class="col-12 col-md-2 col-lg-4 p-3">
+        <%= link_to item_path(item) do %>
+        <div class="card shadow p-3 bg-light col-lg-12 h-100">
+            <%= image_tag item.image, size: "auto" %>
+          <div class="card-body col-md-12">
+            <span><%= item.name %></span><br />
+            <span>￥<%= item.price %></span>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="page-link btn-lg mb-5">
+  <%= paginate @items %>
 </div>

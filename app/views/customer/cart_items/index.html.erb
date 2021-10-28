@@ -1,29 +1,39 @@
-<div class="container">
-  <h1>カートの中身一覧</h1>
-  <%= link_to "カートを空にする", all_destroy_path, method: :delete %>
-  <div class="row">
-    <table>
-      <tbody>
-        <% @cart_items.each do |cart_item| %>
-        <tr>
-          <td>
-            <%= link_to item_path(cart_item.item) do %>
-            <%= image_tag cart_item.item.image, size: "150x150" %>
-            <% end %>
-          </td>
-          <td><%= cart_item.item.name %></td>
-          <td>
-            <%= form_with model:cart_item, method: :patch, local:true do |f| %>
-            <%= f.select :piece, @number %>
-            <%= f.submit "変更" %>
-            <% end %>
-          </td>
-          <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete %></td>
-          <td>￥<%= (cart_item.item.price*1.1*cart_item.piece).round.to_s %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= link_to "情報入力画面に進む", new_order_path %>
+<div class="card-list-container">
+  <div class="contents-title text-center py-3 pb-4">
+    <h1 class="text-black-50 font-weight-lighter">CART</h1>
   </div>
+  <div class="col-4 text-right">
+    <%= link_to "商品一覧へ", items_path, class:"btn btn-outline-dark py-2 mt-5" %>
+    <%= link_to "カートを空にする", all_destroy_path, method: :delete, class:"btn btn-dark py-2 mt-5 ml-3" %>
+  </div>
+  <% @cart_items.each do |cart_item| %>
+  <div class="card col-9 mx-auto mt-3 shadow p-2 pt-3">
+    <table>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to item_path(cart_item.item) do %>
+              <%= image_tag cart_item.item.image, size: "120x120" %>
+              <% end %>
+            </td>
+            <td class="col-3"><%= cart_item.item.name %></td>
+            <td>
+              <%= form_with model:cart_item, method: :patch, local:true do |f| %>
+              <%= f.select :piece, @number %>
+              <%= f.submit "変更", class:"btn btn-outline-dark btn-sm ml-2 mb-1" %>
+              <% end %>
+            </td>
+            <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete,  class:"btn btn-dark btn-sm ml-2 mb-2" %></td>
+            <td class="pb-2">￥<%= (cart_item.item.price*1.1*cart_item.piece).round.to_s%></td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  <% end %>
+  <div class="col-6 mx-auto">
+    <%= link_to "情報入力画面に進む", new_order_path, class:"btn btn-success btn-block py-3 my-5" %>
+  </div>
+</div>
+<div class="container">
+
 </div>
