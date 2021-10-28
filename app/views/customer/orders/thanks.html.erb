@@ -1,2 +1,8 @@
-<h1>ご注文ありがとうございました</h1>
-<%= link_to "商品一覧", items_path %>
+<div class="position-relative h-50">
+  <%= link_to root_path do %>
+  <%= image_tag 'thanks.jpeg', style: "width:100%" %>
+  <% end %>
+  <div class="img-caption position-absolute">
+    <p><%= link_to "購入履歴を確認する", orders_path, class:"btn btn-outline-light btn-lg" %></p>
+  </div>
+</div>
