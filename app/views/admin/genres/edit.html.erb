@@ -1,9 +1,12 @@
-  <% if flash[:notice] %>
-    <%= notice %>
-  <% else flash[:alert] %>
-    <%= alert %>
-  <% end %>
-  <div class="card-list-container py-5">
+<div class="mx-auto text-center">
+<% if notice %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% elsif alert %>
+  <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+<% end %>
+</div>
+
+<div class="card-list-container py-5">
   <%= form_with model: [:admin, @genre], local:true do |f| %>
   <div class="contents-title text-center py-3 pb-4">
     <h2 class="text-black-50 font-weight-lighter">ジャンル編集</h2>

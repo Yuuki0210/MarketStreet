@@ -41,6 +41,12 @@ body , html {
     flex-wrap: wrap;
 }
 
+main {
+  display: block;
+  margin-bottom: 200px;
+  z-index: 2;
+}
+
 footer {
     height: 60px;
     position: absolute;
