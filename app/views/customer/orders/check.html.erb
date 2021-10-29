@@ -23,7 +23,7 @@
             <td>￥<%= (cart_item.item.price*1.1).round.to_s %></td>
             <td><%= cart_item.piece %>個</td>
             <td>￥<%= cart_item.item.price = (cart_item.item.price * 1.1).round.to_s %></td>
-            <% cart_item.item.price = (cart_item.item.price*1.1).round.to_s %>
+            <% cart_item.item.price = (cart_item.item.price).round.to_s %>
             <% price = cart_item.item.price*cart_item.piece %>
             <% sum += price %>
           </tr>
@@ -40,7 +40,7 @@
           <tr>
             <th>送料</th>
             <th>商品合計</th>
-            <th>後請求額</th>
+            <th>ご請求額</th>
             <th>お支払い方法</th>
             <th>お届け先</th>
             <th>宛名</th>

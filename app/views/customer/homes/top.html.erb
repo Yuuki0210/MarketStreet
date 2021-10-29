@@ -28,7 +28,9 @@
       <h3>MARKET STREET</h3>
       <h4 class="my-5">マーケットでの買い物を<br />より便利に簡単に</p>
       <%= link_to "商品一覧を見る", items_path, class:"btn btn-outline-secondary btn-lg mt-4" %><br />
-      <%= image_tag 'logo.png', size:'220x220' %>
+      <%= link_to about_path do %>
+        <%= image_tag 'logo.png', size:'220x220' %>
+      <% end %>
       </div>
   </div>
 </div>

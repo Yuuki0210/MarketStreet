@@ -21,6 +21,7 @@ class Customer::OrdersController < ApplicationController
         end
       redirect_to thanks_path
     else
+      flash.now[:alert] = "空白があります"
       render :new
     end
   end

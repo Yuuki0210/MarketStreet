@@ -1,40 +1,77 @@
-<div class="container">
-  <div class="row">
-    <h1>新規会員登録</h1>
+<div class="card-list-container py-5">
+<%= form_with model:@customer,url: customer_registration_path, local:true do |f| %>
+<%= render "customer/customers/shared/error_messages", resource: resource %>
+  <div class="contents-title text-center py-3 pb-4">
+    <h2 class="text-black-50 font-weight-lighter">SIGN UP</h2>
   </div>
-  <div class="row">
-    <%= form_with model:@customer,url: customer_registration_path, local:true do |f| %>
-    <%= render "customer/customers/shared/error_messages", resource: resource %>
-      <%= f.label "名前" %>
-      <span>姓</span>
-      <%= f.text_field :last_name %>
-      <span>名</span>
-      <%= f.text_field :first_name %><br />
-
-      <%= f.label "フリガナ" %>
-      <span>セイ</span>
-      <%= f.text_field :kana_last_name %>
-      <span>メイ</span>
-      <%= f.text_field :kana_first_name %><br />
-      <%= f.label "メールアドレス" %>
-      <%= f.text_field :email, autofocus: true %><br />
-      <%= f.label "郵便番号(ハイフンなし)" %>
-      <%= f.text_field :postal_code %><br />
-      <%= f.label "住所" %>
-      <%= f.text_field :address %><br />
-      <%= f.label "電話番号(ハイフンなし)" %>
-      <%= f.text_field :phone_number %><br />
-      <%= f.label "パスワード（６文字以上）" %>
-      <%= f.password_field :password %><br />
-      <%= f.label "パスワード（確認用）" %>
-      <%= f.password_field :password_confirmation %><br />
-      <%= f.submit "新規登録" %>
-      <% end %>
+  <div class="card col-7 mx-auto mt-3 shadow p-2 mb-5">
+    <div class="row pl-5">
+      <div class="col-5 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "姓" %>
+          <%= f.text_field :last_name, class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-5 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "名" %>
+          <%= f.text_field :first_name, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-5">
+      <div class="col-5 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "セイ" %>
+          <%= f.text_field :kana_last_name, class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-5 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "メイ" %>
+          <%= f.text_field :kana_first_name, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-5">
+      <div class="col-5 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "郵便番号" %>
+          <%= f.text_field :postal_code, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-5">
+      <div class="col-8 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "住所" %>
+          <%= f.text_field :address, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-5">
+      <div class="col-5 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "電話番号" %>
+          <%= f.text_field :phone_number, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row pl-5">
+      <div class="col-8 py-3 pl-5">
+        <div class="imput-block">
+          <%= f.label "メールアドレス" %>
+          <%= f.text_field :email, class:"form-control" %>
+        </div>
+      </div>
+    </div>
+      <div class="col-10 mx-auto">
+        <%= f.submit '変更を保存する', class:"btn btn-success btn-block py-2 m-3" %>
+      </div>
+    </div>
   </div>
-  <div class="row">
-    <p>会員登録済みの方は</p><br />
-    <%= link_to 'こちら', new_customer_session_path %>
-      <p>からログイン</p>
-    </%>
-  </div>
+  <% end %>
+</div>
+<div class="col-6 mx-auto">
+  <p>会員登録済みの方は<%= link_to "こちら", new_customer_session_path %>から</p>
 </div>
