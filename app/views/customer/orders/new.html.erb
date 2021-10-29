@@ -1,3 +1,10 @@
+<div class="mx-auto text-center">
+<% if notice %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% elsif alert %>
+  <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+<% end %>
+</div>
 <div class="card-list-container py-5">
   <%= form_with model: @order, url: check_path, local:true do |f| %>
   <div class="contents-title text-center py-3 pb-4">
@@ -17,7 +24,7 @@
       <div class="imput-block">
         <h5 class="py-3">お届け先</h5>
         <div class="mb-3">
-          <%= f.radio_button :address_option, "0" %>ご自身の住所<br />
+          <%= f.radio_button :address_option, "0", checked: true %>ご自身の住所<br />
         </div>
         〒<%= @customer.postal_code %><%= @customer.address %><br />
         <%= @customer.last_name %>　<%= @customer.first_name %></p>
