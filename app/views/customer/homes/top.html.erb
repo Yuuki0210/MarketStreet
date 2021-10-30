@@ -9,7 +9,7 @@
     <div class="col-6 col-md-2 col-lg-6 pt-4 h-100">
     <h1 class="item-titler text-center text-black-50 font-weight-lighter pb-2">Item</h1>
       <div class="a">
-      <% @random.each do |item| %>
+      <% @items.each do |item| %>
         <%= link_to item_path(item) do %>
         <div class="b card shadow p-3 bg-light col-12 h-100">
           <%= image_tag item.image, size: "auto" %>
