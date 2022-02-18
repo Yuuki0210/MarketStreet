@@ -35,9 +35,15 @@
         <%= f.collection_select :genre_id, Genre.all, :id, :name, class:"form-select form-select-lg mb-3" %>
       </div>
     </div>
+    <div class="col-4 py-3">
+      <div class="input-block">
+        <%= f.label :price, "税抜き価格(数字のみ)" %>
+        <%= f.text_field :price, class:"form-control" %>
+      </div>
+    </div>
     <div class="col-12 py-3">
       <div class="input-block">
-        <%= f.label :is_active, "販売ステータス" %> </br>
+        <%= f.label :is_active, "販売ステータス" %></br>
         <%= f.label :is_active, "販売中", {value: :true} %>
         <%= f.radio_button :is_active, true %><br />
         <%= f.label :is_active, "販売停止中", {value: :false} %>
