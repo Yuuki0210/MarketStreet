@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
   
-  before_action :move_to_signed_in
+  before_action :authenticate_manager!
 
   def index
     @genre = Genre.new
@@ -40,12 +40,6 @@ class Admin::GenresController < ApplicationController
 
   def genre_params
     params.require(:genre).permit(:name)
-  end
-  
-  def move_to_signed_in
-    unless customer_signed_in?
-      redirect_to  new_manager_session_path
-    end
   end
 
 end

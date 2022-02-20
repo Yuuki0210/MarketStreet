@@ -1,8 +1,16 @@
-<div class="position-relative h-50">
-  <%= link_to root_path do %>
-  <h1>ご注文ありがとうございました</h1>
-  <% end %>
-  <div class="img-caption position-absolute">
-    <p><%= link_to "購入履歴を確認する", orders_path, class:"btn btn-outline-light btn-lg" %></p>
+<div class="container py-5 pb-3">
+  <div class="contents-title text-center py-5 pb-3">
+    <h1 class="text-black-50 font-weight-lighter">ご注文ありがとうございました</h1>
+  </div>
+  <div class="row text-center py-5">
+    <div class="col-4">
+      <%= link_to "購入履歴を確認する", orders_path, class:"btn btn-outline-secondary btn-lg" %>
+    </div>
+    <div class="col-4">
+      <%= link_to "商品一覧を見る", items_path, class:"btn btn-outline-secondary btn-lg" %>
+    </div>
+    <div class="col-4">
+      <%= link_to "マイページへ進む", mypage_path, class:"btn btn-outline-secondary btn-lg" %>
+    </div>
   </div>
 </div>
