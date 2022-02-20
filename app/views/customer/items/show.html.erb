@@ -1,7 +1,7 @@
 <div class="card-list-container py-5">
   <%= form_with model: @cart_item, url:cart_items_path, local:true do |f| %>
   <div class="card w-50 mx-auto mt-6 shadow p-3">
-    <%= image_tag @item.image, size: "100x100" %>
+    <%= image_tag @item.image, size: "auto" %>
     <div class="card-body">
       <div class="row">
         <div class="col-12">
