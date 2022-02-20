@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   
-  s
+  before_action :authenticate_manager!
 
   def index
     if params[:id]
